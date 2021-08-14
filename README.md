@@ -1,2 +1,2 @@
 # streamlitmnist
-Demo of MNIST classifier using Streamlit
+Demo of MNIST Digits classifier using Streamlit
