@@ -6,7 +6,8 @@ import tensorflow
 model = tensorflow.keras.models.load_model('mnist.h5')
 
 st.markdown('# MNIST Digits Classifier')
-st.markdown('Developed by: **Jhonnatan Torres**')
+st.markdown('Streamlit App Developed by: **Jhonnatan Torres**')
+st.markdown('**Note:** Drawable Canvas was developed by [**andfanilo**](https://github.com/andfanilo)')
 st.image('MNIST.png')
 st.write('Picture extracted from https://www.researchgate.net/figure/A-subset-of-the-MNIST-database-of-handwritten-digits_fig4_232650721')
 
@@ -14,7 +15,7 @@ st.write('Picture extracted from https://www.researchgate.net/figure/A-subset-of
 st.write("Please draw a digit between Zero (0) and Nine (9)")
 canvas_result = st_canvas(
     fill_color="rgba(255, 255, 255, 1)",  # Fixed fill color with some opacity
-    stroke_width=35,
+    stroke_width=30,
     stroke_color='#FFFFFF',
     background_color='#000000',
     background_image=None,
@@ -44,5 +45,6 @@ if realtime_update == True:
 	pima = Image.fromarray(np.uint8(imar), 'L')
 	pima = pima.resize((28, 28))
 	dep = np.array(pima).reshape(1, 28, 28, 1)
+	dep = dep / 255
 	pred = np.argmax(model.predict(dep), axis=1)
 	st.write("Predicted Number: ", pred_map[pred[0]])
